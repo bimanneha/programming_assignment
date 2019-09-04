@@ -13,6 +13,7 @@ import {SortedByDistanceComponent} from './sorted-by-distance/sorted-by-distance
 import {SortedByRoomsComponent} from './sorted-by-rooms/sorted-by-rooms.component';
 import {SortedByStreetComponent} from './sorted-by-street/sorted-by-street.component';
 import {MoveInHouseComponent} from './move-in-house/move-in-house.component';
+import { EachHouseComponent } from './each-house/each-house.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MoveInHouseComponent} from './move-in-house/move-in-house.component';
     SortedByRoomsComponent,
     SortedByStreetComponent,
     MoveInHouseComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EachHouseComponent
   ],
   imports: [
     BrowserModule,

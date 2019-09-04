@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 
 import {AllHousesComponent} from './all-houses/all-houses.component';
 import {SortedByDistanceComponent} from './sorted-by-distance/sorted-by-distance.component';
@@ -10,13 +10,17 @@ import {HousesComponent} from './houses/houses.component';
 import {MoveInHouseComponent} from './move-in-house/move-in-house.component';
 
 const routes: Routes = [
-  { path:  '', redirectTo:  '', pathMatch:  'full' },
-  {path: 'houses', component: HousesComponent},
-  {path: 'houses', component: AllHousesComponent},
-  {path: 'houses/distance', component: SortedByDistanceComponent},
-  {path: 'houses/rooms', component: SortedByRoomsComponent},
-  {path: 'houses/street', component: SortedByStreetComponent},
-  {path: 'houses/moveIn', component: MoveInHouseComponent},
+  {path: '', redirectTo: '', pathMatch: 'full'},
+  {
+    path: 'houses', component: HousesComponent,
+    children: [
+      {path: 'all', component: AllHousesComponent},
+      {path: 'distance', component: SortedByDistanceComponent},
+      {path: 'rooms', component: SortedByRoomsComponent},
+      {path: 'street', component: SortedByStreetComponent},
+      {path: 'moveIn', component: MoveInHouseComponent}
+    ]
+  },
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -24,4 +28,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

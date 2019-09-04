@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {House} from '../../model/house';
 import {orderBy} from 'lodash';
 
@@ -8,23 +8,24 @@ import {orderBy} from 'lodash';
   styleUrls: ['./sorted-by-street.component.css']
 })
 
-export class SortedByStreetComponent implements OnInit {
+export class SortedByStreetComponent implements AfterViewInit {
 
   @Input()
-  allHouses: House[];
+  allHouses = new Array<House>();
 
-  housesByStreet: House[];
+  housesByStreet = new Array<House>();
 
   constructor() {
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.sortHousesByStreet();
   }
 
   // a list of houses that you do not have all the data for. Sort them by the street-name.
   sortHousesByStreet() {
-    this.housesByStreet = orderBy(this.allHouses, ['street'], ['asc']);
+    const filteredHouses = this.allHouses.filter(eachHouse => (!eachHouse.params.rooms || !eachHouse.params.value));
+    this.housesByStreet = orderBy(filteredHouses, ['street'], ['asc']);
   }
 
 }

@@ -1,0 +1,33 @@
+<div class="container">
+
+  <div class="row mt-5 offset-1">
+
+    <!--Each House Content-->
+    {{houseData|json}}
+    <ng-container *ngIf="houseData && houseData.length > 0">
+      <div class="card col-md-5 m-2" *ngFor="let eachHouse of houseData; let idx = index">
+
+        <!--Each House Header-->
+        <h4 class="card-header mx-auto mt-3"
+            [ngClass]="((eachHouse.street === 'Eberswalder Straße 55') ? 'bg-color-burly' : '')">
+          {{(eachHouse.street === 'Eberswalder Straße 55') ? 'Sister Home ' : 'House ' + (idx + 1)}}
+        </h4>
+
+        <!--Each House Main Body-->
+        <div class="card-body">
+          <h5 class="card-title">Address - {{eachHouse.street}}</h5>
+          <p class="card-text">Number of Rooms - {{eachHouse.params.rooms || 'Private'}}</p>
+          <p class="card-text">Price - {{eachHouse.params.value || 'Negotiable'}}</p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="houseData.length == 0">
+      <span>No House Data Exists.</span>
+    </ng-container>
+  </div>
+</div>
+
+<br/>
+<br/>
+<br/>

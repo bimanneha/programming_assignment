@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {House} from '../../model/house';
 
 @Component({
@@ -6,15 +6,18 @@ import {House} from '../../model/house';
   templateUrl: './all-houses.component.html',
   styleUrls: ['./all-houses.component.css']
 })
-export class AllHousesComponent implements OnInit {
+export class AllHousesComponent implements AfterViewInit {
 
   @Input()
-  allHouses: House[];
+  allHouses = new Array<House>();
+
+  houses = new Array<House>();
 
   constructor() {
   }
 
-  ngOnInit() {
-
+  ngAfterViewInit(): void {
+    console.log('data : ', this.allHouses);
+    this.houses = this.allHouses;
   }
 }

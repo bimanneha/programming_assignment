@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 })
 export class HeaderComponent {
 
-  title = 'Houses List View';
+  title = 'House View';
 
   constructor() { }
 
