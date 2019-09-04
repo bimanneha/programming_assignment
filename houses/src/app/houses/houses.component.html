@@ -1,0 +1,25 @@
+<!--Header Component including Logo and Name-->
+<app-header></app-header>
+
+<!--Navigate across views of different lists-->
+<app-navigation (tabChanged)="clickedNewTab($event)"></app-navigation>
+
+<!--All Houses from API-->
+<app-all-houses *ngIf="isAllHouses" [allHouses]="allHouses"></app-all-houses>
+
+<!--All Houses sorted by Distance in Ascending Order-->
+<app-sorted-by-distance *ngIf="isByDistance" [allHouses]="allHouses"></app-sorted-by-distance>
+
+<!--All Houses sorted by Number of Rooms greater than 5 in Ascending Order-->
+<app-sorted-by-rooms *ngIf="isByRoom" [allHouses]="allHouses"></app-sorted-by-rooms>
+
+<!--All Houses sorted by Street Name who don't have rooms or price value-->
+<app-sorted-by-street *ngIf="isByStreet" [allHouses]="allHouses"></app-sorted-by-street>
+
+<!--Selecting the House nearest to sister-->
+<!--Having at least 10 rooms-->
+<!--and price less than or equal to 5000000 €-->
+<app-move-in-house *ngIf="isMoveIn" [allHouses]="allHouses"></app-move-in-house>
+
+<!--Footer Component including Copyright Message-->
+<app-footer></app-footer>
