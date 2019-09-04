@@ -9,6 +9,7 @@ export class BuildingsDataService {
 
   constructor(private http: HttpClient) { }
 
+  // API call to retrieve all data of the houses
   getBuildingsData() {
     return this.http.get('buildingsAPI/buildings');
   }

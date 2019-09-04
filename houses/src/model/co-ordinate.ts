@@ -1,3 +1,4 @@
+// Model Class for defining schema of Co-Ordinates
 export class CoOrdinate {
   lat: number;
   lon: number;

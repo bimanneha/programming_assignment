@@ -12,6 +12,7 @@ export class DistanceCalc {
 
   }
 
+  // call function to calculate distance using longitude and latitude values between 2 points
   calculateDistance(eachHouse: House, sistersHouse: House) {
     const latitudeStart = eachHouse.coords.lat;
     const longitudeStart = eachHouse.coords.lon;
