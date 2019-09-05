@@ -4,7 +4,7 @@ export class CoOrdinate {
   lon: number;
 
   constructor() {
-    this.lat = 0.0;
-    this.lon = 0.0;
+    this.lat = 0;
+    this.lon = 0;
   }
 }

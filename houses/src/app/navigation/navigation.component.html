@@ -1,20 +1,25 @@
 <!--Navigation bar to sort houses in various orders-->
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <ul class="navbar-nav m-auto">
-    <li class="nav-item m-2 active">
-      <a class="nav-link" (click)="clickedNewTab('all')" [routerLink]="'all'">All Houses</a>
+    <li class="nav-item m-2">
+      <a class="nav-link" [ngClass]="(tabFlags.isAllHouses === true) ? 'active' : ''"
+        (click)="clickedNewTab('all')" [routerLink]="'all'">All Houses</a>
     </li>
     <li class="nav-item m-2">
-      <a class="nav-link" (click)="clickedNewTab('distance')" [routerLink]="'distance'">By Distance</a>
+      <a class="nav-link" [ngClass]="(tabFlags.isByDistance === true) ? 'active' : ''"
+        (click)="clickedNewTab('distance')" [routerLink]="'distance'">By Distance</a>
     </li>
     <li class="nav-item m-2">
-      <a class="nav-link" (click)="clickedNewTab('rooms')" [routerLink]="'rooms'">By Rooms</a>
+      <a class="nav-link" [ngClass]="(tabFlags.isByRoom === true) ? 'active' : ''"
+        (click)="clickedNewTab('rooms')" [routerLink]="'rooms'">By Rooms</a>
     </li>
     <li class="nav-item m-2">
-      <a class="nav-link" (click)="clickedNewTab('street')" [routerLink]="'street'">By Street Name</a>
+      <a class="nav-link" [ngClass]="(tabFlags.isByStreet === true) ? 'active' : ''"
+        (click)="clickedNewTab('street')" [routerLink]="'street'">By Street Name</a>
     </li>
     <li class="nav-item m-2">
-      <a class="nav-link" (click)="clickedNewTab('moveIn')" [routerLink]="'moveIn'">Move In House</a>
+      <a class="nav-link" [ngClass]="(tabFlags.isMoveIn === true) ? 'active' : ''"
+        (click)="clickedNewTab('moveIn')" [routerLink]="'moveIn'">Move In House</a>
     </li>
   </ul>
 </nav>

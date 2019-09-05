@@ -17,11 +17,14 @@ export class HousesComponent implements OnInit {
   allHouses = new Array<House>();
   sistersHouse = new House();
 
-  isAllHouses = true;
-  isByDistance = false;
-  isByRoom = false;
-  isByStreet = false;
-  isMoveIn = false;
+  tabFlags = {
+    isAllHouses: false,
+    isByDistance: false,
+    isByRoom: false,
+    isByStreet: false,
+    isMoveIn: false
+  };
+
 
   constructor(private buildingsDataService: BuildingsDataService, private distanceCalc: DistanceCalc) {
   }
@@ -36,7 +39,7 @@ export class HousesComponent implements OnInit {
         this.extractSistersHouse();
         this.calculateDistance();
 
-        console.log('this.allHouses', this.allHouses);
+        this.tabFlags.isAllHouses = true;
       });
   }
 
@@ -69,56 +72,55 @@ export class HousesComponent implements OnInit {
   // calculate distance of each House from the sister's house using their longitude and latitude values
   calculateDistance(): void {
     this.allHouses.forEach(eachHouse => {
-      // skipping sister's house as the distance would be 0.0 naturally
+      // skipping sister's house as the distance would be 0 naturally
       eachHouse.distance = (eachHouse.street !== StreetEnum.SISTER) ?
-        this.distanceCalc.calculateDistance(eachHouse, this.sistersHouse) : 0.0;
+        this.distanceCalc.calculateDistance(eachHouse, this.sistersHouse) : 0;
     });
   }
 
   clickedNewTab(tabName): void {
-    console.log('tabName', tabName);
     switch (tabName) {
       case 'all':
-        this.isAllHouses = true;
-        this.isByDistance = false;
-        this.isByRoom = false;
-        this.isByStreet = false;
-        this.isMoveIn = false;
+        this.tabFlags.isAllHouses = true;
+        this.tabFlags.isByDistance = false;
+        this.tabFlags.isByRoom = false;
+        this.tabFlags.isByStreet = false;
+        this.tabFlags.isMoveIn = false;
         break;
       case 'distance':
-        this.isAllHouses = false;
-        this.isByDistance = true;
-        this.isByRoom = false;
-        this.isByStreet = false;
-        this.isMoveIn = false;
+        this.tabFlags.isAllHouses = false;
+        this.tabFlags.isByDistance = true;
+        this.tabFlags.isByRoom = false;
+        this.tabFlags.isByStreet = false;
+        this.tabFlags.isMoveIn = false;
         break;
       case 'rooms':
-        this.isAllHouses = false;
-        this.isByDistance = false;
-        this.isByRoom = true;
-        this.isByStreet = false;
-        this.isMoveIn = false;
+        this.tabFlags.isAllHouses = false;
+        this.tabFlags.isByDistance = false;
+        this.tabFlags.isByRoom = true;
+        this.tabFlags.isByStreet = false;
+        this.tabFlags.isMoveIn = false;
         break;
       case 'street':
-        this.isAllHouses = false;
-        this.isByDistance = false;
-        this.isByRoom = false;
-        this.isByStreet = true;
-        this.isMoveIn = false;
+        this.tabFlags.isAllHouses = false;
+        this.tabFlags.isByDistance = false;
+        this.tabFlags.isByRoom = false;
+        this.tabFlags.isByStreet = true;
+        this.tabFlags.isMoveIn = false;
         break;
       case 'moveIn':
-        this.isAllHouses = false;
-        this.isByDistance = false;
-        this.isByRoom = false;
-        this.isByStreet = false;
-        this.isMoveIn = true;
+        this.tabFlags.isAllHouses = false;
+        this.tabFlags.isByDistance = false;
+        this.tabFlags.isByRoom = false;
+        this.tabFlags.isByStreet = false;
+        this.tabFlags.isMoveIn = true;
         break;
       default:
-        this.isAllHouses = true;
-        this.isByDistance = false;
-        this.isByRoom = false;
-        this.isByStreet = false;
-        this.isMoveIn = false;
+        this.tabFlags.isAllHouses = true;
+        this.tabFlags.isByDistance = false;
+        this.tabFlags.isByRoom = false;
+        this.tabFlags.isByStreet = false;
+        this.tabFlags.isMoveIn = false;
         break;
     }
   }

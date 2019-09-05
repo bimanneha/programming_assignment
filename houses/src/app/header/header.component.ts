@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 })
 export class HeaderComponent {
 
-  title = 'House View';
+  title = 'Houses in Berlin';
 
   constructor() { }
 

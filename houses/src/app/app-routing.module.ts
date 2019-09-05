@@ -10,10 +10,11 @@ import {HousesComponent} from './houses/houses.component';
 import {MoveInHouseComponent} from './move-in-house/move-in-house.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '', pathMatch: 'full'},
+  {path: '', redirectTo: 'houses', pathMatch: 'full' },
   {
     path: 'houses', component: HousesComponent,
     children: [
+      {path: '', redirectTo: 'all', pathMatch: 'full' },
       {path: 'all', component: AllHousesComponent},
       {path: 'distance', component: SortedByDistanceComponent},
       {path: 'rooms', component: SortedByRoomsComponent},

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, Input} from '@angular/core';
 import {House} from '../../model/house';
 import {isEmpty} from 'lodash';
 
@@ -7,7 +7,7 @@ import {isEmpty} from 'lodash';
   templateUrl: './move-in-house.component.html',
   styleUrls: ['./move-in-house.component.css']
 })
-export class MoveInHouseComponent implements AfterViewInit {
+export class MoveInHouseComponent implements AfterViewChecked {
 
   @Input()
   allHouses = new Array<House>();
@@ -15,20 +15,20 @@ export class MoveInHouseComponent implements AfterViewInit {
   moveInHouse = new Array<House>();
   selectedMoveInHouse = false;
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) {
+  }
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
     this.findMoveInHouse();
+    this.cdr.detectChanges();
   }
 
   // move into the house that is closest to your sisters home, but only if the house has at least 10 rooms and does not cost more than
-  // 5.000.000 €. If you don't know the number of rooms, or the value of the house, you do not w ant to move into the house.
+  // 5000000 €. If you don't know the number of rooms, or the value of the house, you do not w ant to move into the house.
   findMoveInHouse() {
-    console.log('this.allHouses', this.allHouses);
     const housesWithRoomsAndValues = this.allHouses.filter(eachHouse => eachHouse.params.rooms && eachHouse.params.value);
     const selectedHouse = housesWithRoomsAndValues.filter(eachHouse => eachHouse.params.rooms >= 10 && eachHouse.params.value <= 5000000);
     this.moveInHouse = (isEmpty(selectedHouse)) ? selectedHouse : new Array<House>();
-    console.log('this.moveInHouse', this.moveInHouse);
 
     this.selectedMoveInHouse = (!isEmpty(this.moveInHouse));
   }

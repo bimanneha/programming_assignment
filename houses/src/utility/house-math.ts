@@ -18,7 +18,7 @@ export class HouseMath {
       Math.cos(this.deg2rad(startLatitude)) * Math.cos(this.deg2rad(endLatitude)) *
       Math.sin(dLongitude / 2) * Math.sin(dLongitude / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return (R * c); // Distance in km
+    return parseFloat((R * c).toFixed(3)); // Distance in km
   }
 
   deg2rad(deg) {

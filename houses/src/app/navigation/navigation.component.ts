@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -6,6 +6,15 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+
+  @Input()
+  tabFlags: {
+    isAllHouses: false,
+    isByDistance: false,
+    isByRoom: false,
+    isByStreet: false,
+    isMoveIn: false
+  };
 
   @Output()
   tabChanged = new EventEmitter();
@@ -18,7 +27,6 @@ export class NavigationComponent implements OnInit {
   }
 
   clickedNewTab(evt) {
-    console.log('evt value inside nav', evt);
     this.tabChanged.emit(evt);
   }
 

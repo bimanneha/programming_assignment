@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, Input} from '@angular/core';
 import {House} from '../../model/house';
 
 @Component({
@@ -6,18 +6,18 @@ import {House} from '../../model/house';
   templateUrl: './all-houses.component.html',
   styleUrls: ['./all-houses.component.css']
 })
-export class AllHousesComponent implements AfterViewInit {
+export class AllHousesComponent implements AfterViewChecked {
 
   @Input()
   allHouses = new Array<House>();
 
   houses = new Array<House>();
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
   }
 
-  ngAfterViewInit(): void {
-    console.log('data : ', this.allHouses);
+  ngAfterViewChecked(): void {
     this.houses = this.allHouses;
+    this.cdr.detectChanges();
   }
 }

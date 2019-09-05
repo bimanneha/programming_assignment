@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, Input} from '@angular/core';
 import {House} from '../../model/house';
 import {orderBy} from 'lodash';
 
@@ -8,18 +8,19 @@ import {orderBy} from 'lodash';
   styleUrls: ['./sorted-by-street.component.css']
 })
 
-export class SortedByStreetComponent implements AfterViewInit {
+export class SortedByStreetComponent implements AfterViewChecked {
 
   @Input()
   allHouses = new Array<House>();
 
   housesByStreet = new Array<House>();
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
   }
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
     this.sortHousesByStreet();
+    this.cdr.detectChanges();
   }
 
   // a list of houses that you do not have all the data for. Sort them by the street-name.

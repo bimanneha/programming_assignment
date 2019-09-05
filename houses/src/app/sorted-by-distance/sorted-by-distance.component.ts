@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, Input} from '@angular/core';
 import {House} from '../../model/house';
 import {orderBy} from 'lodash';
 
@@ -8,25 +8,24 @@ import {orderBy} from 'lodash';
   styleUrls: ['./sorted-by-distance.component.css']
 })
 
-export class SortedByDistanceComponent implements AfterViewInit {
+export class SortedByDistanceComponent implements AfterViewChecked {
 
   @Input()
   allHouses = new Array<House>();
 
   housesSortedByDistance = new Array<House>();
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) {
+  }
 
-  ngAfterViewInit(): void {
-    console.log('this.allHouses on after init', this.allHouses);
+  ngAfterViewChecked(): void {
     this.sortByLowestDistance();
+    this.cdr.detectChanges();
   }
 
   // sorting all the houses based on distance in ascending order
   sortByLowestDistance(): void {
-    console.log('this.allHouses', this.allHouses);
     this.housesSortedByDistance = orderBy(this.allHouses, ['distance'], ['asc']);
-    console.log('this.housesSortedByDistance', this.housesSortedByDistance);
   }
 
 }
