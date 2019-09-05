@@ -38,10 +38,11 @@ You can fetch the data from this REST-Endpoint: https://demo.interfacema.de/prog
 - Run 'npm start' command to run the application.
 - http://localhost:4200/ is the link which you can use to access the application in your browser.
 
-#Technical Detals with Versions :
+#Technical Details with Versions :
 
 - Angular CLI - 8.0.6
 - Node - 10.16.0
 - Bootstrap - 4.3.1
 - Lodash - 4.17.15
+- RxJS - 6
 
