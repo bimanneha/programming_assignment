@@ -28,11 +28,11 @@ Resources
   
 Steps for running the application :
 
-Clone or Download the source code from the WebApp_Imgur_Gallery repository in your local machine.
-Run 'npm install' command in your terminal. This will download all the required packages in your local machine.
+Clone or Download the source code from the programming_assignment repository in your local machine.
+Open the Angular Project programming_assignment in your IDE.
+Run 'npm install' command from your terminal. This will download all the required packages in your local environment.
 Run 'npm start' command to run the application.
-http://localhost:4200/ is the link which you can use in your browser.
-The application is published on gh-pages and is accessible to everyone on the below mentioned link: https://bimanneha.github.io/imageGallery/home
+http://localhost:4200/ is the link which you can use to access the application in your browser.
 
 Technical Detals with Versions :
 
@@ -40,3 +40,4 @@ Angular CLI - 8.0.6
 Node - 10.16.0
 Bootstrap - 4.3.1
 Lodash - 4.17.15
+
