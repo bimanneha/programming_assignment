@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SortedByRoomsComponent } from './sorted-by-rooms.component';
+import {EachHouseComponent} from '../each-house/each-house.component';
 
 describe('SortedByRoomsComponent', () => {
   let component: SortedByRoomsComponent;
@@ -8,7 +9,7 @@ describe('SortedByRoomsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SortedByRoomsComponent ]
+      declarations: [ SortedByRoomsComponent, EachHouseComponent ]
     })
     .compileComponents();
   }));

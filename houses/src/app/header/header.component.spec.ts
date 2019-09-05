@@ -22,4 +22,16 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it(`should have title as 'Houses in Berlin'`, () => {
+    const app = fixture.debugElement.componentInstance;
+    expect(app.title).toEqual('Houses in Berlin');
+  });
+
+  it('should render title in an h2 tag', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h2').textContent).toContain('Houses in Berlin');
+  });
 });

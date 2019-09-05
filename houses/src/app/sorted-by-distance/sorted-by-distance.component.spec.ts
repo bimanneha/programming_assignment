@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SortedByDistanceComponent } from './sorted-by-distance.component';
+import {EachHouseComponent} from '../each-house/each-house.component';
 
 describe('SortedByDistanceComponent', () => {
   let component: SortedByDistanceComponent;
@@ -8,7 +9,7 @@ describe('SortedByDistanceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SortedByDistanceComponent ]
+      declarations: [ SortedByDistanceComponent, EachHouseComponent ]
     })
     .compileComponents();
   }));
@@ -19,7 +20,7 @@ describe('SortedByDistanceComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create SortedByDistance Component', () => {
     expect(component).toBeTruthy();
   });
 });
