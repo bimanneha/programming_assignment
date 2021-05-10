@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.0.3",
     "@angular/router": "~8.0.3",
     "bootstrap": "^4.3.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "ngx-onsenui": "^7.0.0",
     "onsenui": "^2.10.10",
     "rxjs": "~6.4.0",
